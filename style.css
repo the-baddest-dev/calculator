@@ -101,7 +101,19 @@ body {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: filter 100ms ease, transform 100ms ease;
+}
+
+/* Keep browser focus and tap effects from drawing outside the circles */
+.keypad button:focus,
+.keypad button:focus-visible,
+.keypad button:focus-within {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Utility buttons use medium grey and white text */
@@ -121,8 +133,10 @@ body {
 }
 
 /* Slightly brighter feedback while a button is pressed */
-.keypad button:hover {
-  filter: brightness(1.12);
+@media (hover: hover) {
+  .keypad button:hover {
+    filter: brightness(1.12);
+  }
 }
 
 .keypad button:active {
